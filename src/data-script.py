@@ -10,6 +10,9 @@ if "src" in str(DATA_PATH):
 else:
     DATA_PATH = DATA_PATH / "data"
 
+if not DATA_PATH.exists():
+    DATA_PATH.mkdir(parents=True, exist_ok=True)
+
 if __name__ == "__main__":
     logging.basicConfig(
         level=logging.INFO,
