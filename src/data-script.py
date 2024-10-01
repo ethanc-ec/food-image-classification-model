@@ -1,6 +1,7 @@
-from pathlib import Path
-import polars as pl
 import logging
+from pathlib import Path
+
+import polars as pl
 
 DATA_PATH = Path.cwd()
 
@@ -66,5 +67,3 @@ if __name__ == "__main__":
         logger.info("food102-test dataset already exists")
         
     logger.info("Completed: All downloads/checks")
-        
-        
