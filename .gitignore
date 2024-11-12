@@ -166,3 +166,6 @@ cython_debug/
 
 # PyTorch data
 data/
+
+# SAM2 Data
+*.pt
