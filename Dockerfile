@@ -7,5 +7,6 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 
 # Install Python packages
 COPY pyproject.toml .
+ENV UV_LINK_MODE=copy
 RUN pip install uv && \
-    uv sync --link-mode=copy
+    uv sync

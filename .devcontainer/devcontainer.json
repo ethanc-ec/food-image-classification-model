@@ -26,7 +26,8 @@
 				"PKief.material-icon-theme",
 				"mutantdino.resourcemonitor",
 				"charliermarsh.ruff",
-				"fill-labs.dependi"
+				"fill-labs.dependi",
+				"tamasfe.even-better-toml"
 			]
 		}
 	},
