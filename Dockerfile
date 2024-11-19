@@ -2,7 +2,7 @@ FROM pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime
 
 # Install additional packages
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends ffmpeg libsm6 libxext6 \
+    && apt-get -y install --no-install-recommends ffmpeg libsm6 libxext6 wget git \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Python packages
@@ -10,3 +10,13 @@ COPY pyproject.toml .
 ENV UV_LINK_MODE=copy
 RUN pip install uv && \
     uv sync
+
+# Install CUDA related items
+RUN apt-key del 7fa2af80; exit 0
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+RUN dpkg -i cuda-keyring_1.1-1_all.deb && apt-get update
+RUN apt-get -y install cuda-toolkit
+RUN apt-get -y install cudnn9-cuda-12
+
+ENV PATH="/usr/local/cuda-12.6/bin${PATH:+:${PATH}}"
+ENV LD_LIBRARY_PATH="/usr/local/cuda-12.6/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
