@@ -6,9 +6,10 @@ from pathlib import Path
 
 from PIL import Image
 from rembg import new_session, remove
+from torch.cuda import is_available
 from tqdm import tqdm
 
-session = new_session("u2net",  ["CUDAExecutionProvider"])
+session = new_session("u2net",  ["CUDAExecutionProvider"] if is_available() else ["CPUExecutionProvider"])
 DATA_PATH = Path.cwd().parent / "data" if Path.cwd().name == "src" else Path.cwd() / "data"
 REGENERATE = False
 
