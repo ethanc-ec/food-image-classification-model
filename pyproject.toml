@@ -17,12 +17,17 @@ dependencies = [
     "polars>=1.14.0",
     "pyarrow>=18.0.0",
     "pymatting>=1.1.13",
-    "rembg[gpu]>=2.0.59",
+    "rembg>=2.0.59",
     "ruff>=0.7.4",
     "torch>=2.5.1",
     "torchaudio>=2.5.1",
     "torchvision>=0.20.1",
     "tqdm>=4.67.0",
+]
+
+[project.optional-dependencies]
+GPU = [
+    "rembg[gpu]>=2.0.59",
 ]
 
 [tool.pyright]
