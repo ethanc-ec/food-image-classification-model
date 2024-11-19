@@ -41,6 +41,9 @@ if __name__ == "__main__":
 
         print(f"Read {data.select(pl.len()).item()} images")
 
+        Path(f"{DATA_PATH}/base_jpg/{dataset}").mkdir(parents=True, exist_ok=True)
+        Path(f"{DATA_PATH}/no_bg_png/{dataset}").mkdir(parents=True, exist_ok=True)
+
         with ThreadPoolExecutor() as executor:
             results = dict(executor.map(process_base, data.iter_rows(), repeat(dataset)))
 
