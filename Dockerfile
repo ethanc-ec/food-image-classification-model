@@ -12,11 +12,11 @@ RUN apt-get -y install cuda-toolkit
 RUN apt-get -y install cudnn9-cuda-12
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Set CUDA environment variables
 ENV PATH="/usr/local/cuda-12.6/bin${PATH:+:${PATH}}"
 ENV LD_LIBRARY_PATH="/usr/local/cuda-12.6/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 
 # Install Python packages
 COPY pyproject.toml .
 ENV UV_LINK_MODE=copy
-RUN pip install uv && \
-    uv sync
+RUN pip install uv && uv sync
