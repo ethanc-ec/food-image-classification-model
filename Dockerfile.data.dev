@@ -7,7 +7,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 # Install Python packages
 COPY pyproject.toml .
 ENV UV_LINK_MODE=copy
-RUN pip install uv && uv sync
+RUN pip install uv && uv sync --extra data
 
 # Install CUDA related items
 RUN apt-key del 7fa2af80; exit 0

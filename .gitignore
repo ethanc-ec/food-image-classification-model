@@ -171,3 +171,7 @@ cython_debug/
 
 # CUDA Keyring
 *.deb
+
+# Models
+*.weights.h5
+*.keras
